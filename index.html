@@ -11,6 +11,19 @@
 
     <div class="ocean-bg"></div>
 
+    <div class="bubbles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <header>
         <div class="logo">
             <span>〰</span>
@@ -29,10 +42,8 @@
     <main id="beranda">
 
         <section class="hero">
-            <div class="bubble bubble-1"></div>
-            <div class="bubble bubble-2"></div>
 
-            <p class="eyebrow">MATH TAKES YOU DEEPER</p>
+            <p class="eyebrow">BILANGAN KOMPLEKS</p>
 
             <h1>
                 Analisis<br>
@@ -40,9 +51,9 @@
             </h1>
 
             <p class="subtitle">
-                Selami dunia bilangan,<br>
-                temukan maknanya.
+                Real · Imajiner · Kompleks
             </p>
+
         </section>
 
 
@@ -50,6 +61,7 @@
 
             <div class="section-title">
                 <span class="icon">〰</span>
+
                 <div>
                     <h2>Masukkan bilangan</h2>
                     <p>atau ekspresi matematika</p>
@@ -57,6 +69,7 @@
             </div>
 
             <div class="input-area">
+
                 <input
                     type="text"
                     id="inputBilangan"
@@ -70,9 +83,11 @@
                 >
                     ×
                 </button>
+
             </div>
 
             <div class="contoh">
+
                 <span>Contoh cepat</span>
 
                 <button onclick="isiContoh('5')">5</button>
@@ -80,12 +95,15 @@
                 <button onclick="isiContoh('3+4i')">3+4i</button>
                 <button onclick="isiContoh('√-16')">√-16</button>
                 <button onclick="isiContoh('√12+√-18')">√12+√-18</button>
+
             </div>
 
             <button class="analisis-btn" onclick="analisis()">
+
                 <span>〰</span>
                 Analisis
                 <b>→</b>
+
             </button>
 
         </section>
@@ -94,47 +112,64 @@
         <section class="hasil">
 
             <div class="hasil-heading">
+
                 <div>
                     <span class="coral-icon">✦</span>
                     <h2>Hasil Analisis</h2>
                 </div>
 
-                <p>Setiap bilangan<br>punya ceritanya sendiri.</p>
+                <p>z = a + bi</p>
+
             </div>
 
 
             <div class="hasil-list">
 
                 <div class="hasil-item">
+
                     <div class="hasil-label">
                         <span>◈</span>
                         <p>Bentuk standar</p>
                     </div>
+
                     <strong id="standar">-</strong>
+
                 </div>
 
+
                 <div class="hasil-item">
+
                     <div class="hasil-label">
                         <span>✦</span>
                         <p>Bagian real</p>
                     </div>
+
                     <strong id="real">-</strong>
+
                 </div>
 
+
                 <div class="hasil-item">
+
                     <div class="hasil-label">
                         <span>◌</span>
                         <p>Bagian imajiner</p>
                     </div>
+
                     <strong id="imaginer">-</strong>
+
                 </div>
 
+
                 <div class="hasil-item last">
+
                     <div class="hasil-label">
                         <span>🐟</span>
                         <p>Jenis bilangan</p>
                     </div>
+
                     <strong id="jenis">-</strong>
+
                 </div>
 
             </div>
@@ -148,6 +183,7 @@
 
             <div>
                 <h3>Tips menyelam</h3>
+
                 <p>
                     Gunakan tanda √ untuk akar,
                     i untuk bilangan imajiner,
@@ -184,7 +220,7 @@
 
 
     <footer>
-        <p>〰 &nbsp; Matematika Seluas Lautan &nbsp; 〰</p>
+        <p>Built by Nnaell · Assisted by ChatGPT</p>
     </footer>
 
 
