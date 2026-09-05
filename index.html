@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Bilangan Kompleks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="container">
+        <div class="header">
+            <h1>Analisis Bilangan</h1>
+            <p>Program Analisis Bilangan Real, Imajiner, dan Kompleks</p>
+        </div>
+
+        <div class="card">
+            <label for="inputBilangan">Masukkan bilangan atau ekspresi:</label>
+
+            <input
+                type="text"
+                id="inputBilangan"
+                placeholder="Contoh: √-908 + √1476 + 2487"
+                autocomplete="off"
+            >
+
+            <button onclick="analisis()">Analisis</button>
+
+            <div class="contoh">
+                <span>Contoh:</span>
+                <button onclick="isiContoh('5')">5</button>
+                <button onclick="isiContoh('4i')">4i</button>
+                <button onclick="isiContoh('3+4i')">3+4i</button>
+                <button onclick="isiContoh('√-16')">√-16</button>
+                <button onclick="isiContoh('√12+√-18')">√12+√-18</button>
+            </div>
+        </div>
+
+        <div class="hasil" id="hasil">
+            <div class="hasil-header">
+                <h2>Hasil Analisis</h2>
+            </div>
+
+            <div class="hasil-item">
+                <span>Bentuk standar</span>
+                <strong id="standar">-</strong>
+            </div>
+
+            <div class="hasil-item">
+                <span>Bagian real</span>
+                <strong id="real">-</strong>
+            </div>
+
+            <div class="hasil-item">
+                <span>Bagian imajiner</span>
+                <strong id="imaginer">-</strong>
+            </div>
+
+            <div class="hasil-item jenis">
+                <span>Jenis bilangan</span>
+                <strong id="jenis">-</strong>
+            </div>
+        </div>
+
+        <div class="info">
+            <h3>Format yang didukung</h3>
+            <p>✓ Bilangan real: 5, -25, 2487</p>
+            <p>✓ Bilangan imajiner: i, 4i, -7i</p>
+            <p>✓ Akar: √25, √12, √-16</p>
+            <p>✓ Bentuk campuran: 3+4i, √12+√-18</p>
+            <p>✓ Penyederhanaan akar secara simbolik</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
