@@ -3,75 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analisis Bilangan Kompleks</title>
+    <title>Analisis Bilangan</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="container">
-        <div class="header">
-            <h1>Analisis Bilangan</h1>
-            <p>Program Analisis Bilangan Real, Imajiner, dan Kompleks</p>
+    <div class="ocean-bg"></div>
+
+    <header>
+        <div class="logo">
+            <span>〰</span>
+            Analisis Bilangan
         </div>
 
-        <div class="card">
-            <label for="inputBilangan">Masukkan bilangan atau ekspresi:</label>
+        <nav>
+            <a href="#beranda">Beranda</a>
+            <a href="#panduan">Panduan</a>
+            <a href="#tentang">Tentang</a>
+        </nav>
 
-            <input
-                type="text"
-                id="inputBilangan"
-                placeholder="Contoh: √-908 + √1476 + 2487"
-                autocomplete="off"
-            >
+        <button class="menu">☰</button>
+    </header>
 
-            <button onclick="analisis()">Analisis</button>
+    <main id="beranda">
+
+        <section class="hero">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+
+            <p class="eyebrow">MATH TAKES YOU DEEPER</p>
+
+            <h1>
+                Analisis<br>
+                <span>Bilangan</span>
+            </h1>
+
+            <p class="subtitle">
+                Selami dunia bilangan,<br>
+                temukan maknanya.
+            </p>
+        </section>
+
+
+        <section class="calculator">
+
+            <div class="section-title">
+                <span class="icon">〰</span>
+                <div>
+                    <h2>Masukkan bilangan</h2>
+                    <p>atau ekspresi matematika</p>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input
+                    type="text"
+                    id="inputBilangan"
+                    placeholder="Contoh: √-908 + √1476 + 2487"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="clear"
+                    onclick="document.getElementById('inputBilangan').value=''"
+                >
+                    ×
+                </button>
+            </div>
 
             <div class="contoh">
-                <span>Contoh:</span>
+                <span>Contoh cepat</span>
+
                 <button onclick="isiContoh('5')">5</button>
                 <button onclick="isiContoh('4i')">4i</button>
                 <button onclick="isiContoh('3+4i')">3+4i</button>
                 <button onclick="isiContoh('√-16')">√-16</button>
                 <button onclick="isiContoh('√12+√-18')">√12+√-18</button>
             </div>
-        </div>
 
-        <div class="hasil" id="hasil">
-            <div class="hasil-header">
-                <h2>Hasil Analisis</h2>
+            <button class="analisis-btn" onclick="analisis()">
+                <span>〰</span>
+                Analisis
+                <b>→</b>
+            </button>
+
+        </section>
+
+
+        <section class="hasil">
+
+            <div class="hasil-heading">
+                <div>
+                    <span class="coral-icon">✦</span>
+                    <h2>Hasil Analisis</h2>
+                </div>
+
+                <p>Setiap bilangan<br>punya ceritanya sendiri.</p>
             </div>
 
-            <div class="hasil-item">
-                <span>Bentuk standar</span>
-                <strong id="standar">-</strong>
+
+            <div class="hasil-list">
+
+                <div class="hasil-item">
+                    <div class="hasil-label">
+                        <span>◈</span>
+                        <p>Bentuk standar</p>
+                    </div>
+                    <strong id="standar">-</strong>
+                </div>
+
+                <div class="hasil-item">
+                    <div class="hasil-label">
+                        <span>✦</span>
+                        <p>Bagian real</p>
+                    </div>
+                    <strong id="real">-</strong>
+                </div>
+
+                <div class="hasil-item">
+                    <div class="hasil-label">
+                        <span>◌</span>
+                        <p>Bagian imajiner</p>
+                    </div>
+                    <strong id="imaginer">-</strong>
+                </div>
+
+                <div class="hasil-item last">
+                    <div class="hasil-label">
+                        <span>🐟</span>
+                        <p>Jenis bilangan</p>
+                    </div>
+                    <strong id="jenis">-</strong>
+                </div>
+
             </div>
 
-            <div class="hasil-item">
-                <span>Bagian real</span>
-                <strong id="real">-</strong>
+        </section>
+
+
+        <section class="tips" id="panduan">
+
+            <div class="tips-icon">🪼</div>
+
+            <div>
+                <h3>Tips menyelam</h3>
+                <p>
+                    Gunakan tanda √ untuk akar,
+                    i untuk bilangan imajiner,
+                    dan + atau - untuk menggabungkan ekspresi.
+                </p>
             </div>
 
-            <div class="hasil-item">
-                <span>Bagian imajiner</span>
-                <strong id="imaginer">-</strong>
+        </section>
+
+
+        <section class="info" id="tentang">
+
+            <div>
+                <span>〰</span>
+                <h3>Berbagai bentuk</h3>
+                <p>Real, imajiner, kompleks, dan akar.</p>
             </div>
 
-            <div class="hasil-item jenis">
-                <span>Jenis bilangan</span>
-                <strong id="jenis">-</strong>
+            <div>
+                <span>✦</span>
+                <h3>Penyederhanaan</h3>
+                <p>Akar disederhanakan secara otomatis.</p>
             </div>
-        </div>
 
-        <div class="info">
-            <h3>Format yang didukung</h3>
-            <p>✓ Bilangan real: 5, -25, 2487</p>
-            <p>✓ Bilangan imajiner: i, 4i, -7i</p>
-            <p>✓ Akar: √25, √12, √-16</p>
-            <p>✓ Bentuk campuran: 3+4i, √12+√-18</p>
-            <p>✓ Penyederhanaan akar secara simbolik</p>
-        </div>
-    </div>
+            <div>
+                <span>🐚</span>
+                <h3>Mudah digunakan</h3>
+                <p>Masukkan ekspresi lalu analisis.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>〰 &nbsp; Matematika Seluas Lautan &nbsp; 〰</p>
+    </footer>
+
 
     <script src="script.js"></script>
+
 </body>
 </html>
