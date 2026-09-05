@@ -1,172 +1,699 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f2f4f8;
-    min-height: 100vh;
-    padding: 40px 20px;
-    color: #222;
+html {
+    scroll-behavior: smooth;
 }
 
-.container {
-    max-width: 800px;
+body {
+    font-family: "DM Sans", sans-serif;
+    color: white;
+    background: #063b73;
+    overflow-x: hidden;
+}
+
+.ocean-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(3, 83, 145, 0.12),
+            rgba(2, 39, 82, 0.5)
+        ),
+        url("background.png");
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+.ocean-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(113, 221, 255, 0.15),
+            transparent 35%
+        ),
+        linear-gradient(
+            to bottom,
+            transparent 55%,
+            rgba(2, 25, 60, 0.55)
+        );
+}
+
+header {
+    width: min(1100px, calc(100% - 32px));
+    margin: 18px auto 0;
+
+    padding: 12px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(4, 73, 125, 0.48);
+    border: 1px solid rgba(255,255,255,0.22);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.15);
+}
+
+.logo {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo span {
+    font-size: 30px;
+    margin-right: 5px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+.menu {
+    display: none;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 27px;
+}
+
+main {
+    width: min(900px, calc(100% - 28px));
     margin: auto;
 }
 
-.header {
+.hero {
+    position: relative;
     text-align: center;
+    padding: 75px 10px 45px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    opacity: 0.75;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: clamp(58px, 12vw, 110px);
+    line-height: 0.78;
+    font-weight: 800;
+
+    text-shadow:
+        3px 4px 0 rgba(0, 52, 105, 0.65),
+        0 0 25px rgba(137, 234, 255, 0.35);
+
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: #d9f7ff;
+
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+}
+
+.subtitle {
+    margin-top: 28px;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 20px;
+    line-height: 1.25;
+    color: #d7f5ff;
+}
+
+.calculator,
+.hasil,
+.tips,
+.info {
+    background: rgba(20, 128, 190, 0.42);
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    border-radius: 28px;
+
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+
+    box-shadow:
+        0 15px 45px rgba(0, 20, 60, 0.25),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+}
+
+.calculator {
+    padding: 25px;
     margin-bottom: 25px;
 }
 
-.header h1 {
-    font-size: 36px;
-    margin-bottom: 8px;
-}
-
-.header p {
-    color: #666;
-    font-size: 16px;
-}
-
-.card,
-.hasil,
-.info {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
     margin-bottom: 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
-.card label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
+.icon {
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(191, 244, 255, 0.18);
+    border-radius: 15px;
+
+    font-size: 25px;
+}
+
+.section-title h2,
+.hasil-heading h2 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 25px;
+}
+
+.section-title p {
+    font-size: 13px;
+    opacity: 0.72;
+}
+
+.input-area {
+    position: relative;
 }
 
 input {
     width: 100%;
-    padding: 15px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    font-size: 18px;
+    height: 58px;
+
+    padding: 0 48px 0 18px;
+
+    border: 2px solid rgba(255,255,255,0.35);
+    border-radius: 17px;
+
     outline: none;
-    margin-bottom: 15px;
+
+    background: rgba(240, 252, 255, 0.94);
+
+    color: #164c7d;
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: #7195b2;
 }
 
 input:focus {
-    border-color: #555;
+    border-color: #9beaff;
+    box-shadow: 0 0 18px rgba(99, 220, 255, 0.3);
 }
 
-button {
+.clear {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 32px;
+    height: 32px;
+
     border: none;
-    border-radius: 9px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background: #222;
-    color: white;
-    transition: 0.2s;
-}
+    border-radius: 50%;
 
-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.85;
+    background: #4594ca;
+    color: white;
+
+    font-size: 22px;
+    line-height: 1;
+
+    cursor: pointer;
 }
 
 .contoh {
-    margin-top: 18px;
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
     align-items: center;
+
+    margin: 17px 0 20px;
 }
 
 .contoh span {
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 4px;
 }
 
 .contoh button {
-    background: #eee;
-    color: #222;
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 7px 12px;
+
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.1);
+    color: white;
+
+    font-size: 13px;
+
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.hasil-header {
-    border-bottom: 2px solid #eee;
-    padding-bottom: 15px;
-    margin-bottom: 5px;
+.contoh button:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
 }
 
-.hasil-header h2 {
-    font-size: 24px;
+.analisis-btn {
+    width: 100%;
+    height: 55px;
+
+    border: 1px solid rgba(255,255,255,0.45);
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0a70bc,
+            #20b9e5
+        );
+
+    color: white;
+
+    font-family: "Baloo 2", sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0, 130, 200, 0.3);
+
+    transition: 0.25s;
 }
 
-.hasil-item {
+.analisis-btn span {
+    margin-right: 8px;
+}
+
+.analisis-btn b {
+    float: right;
+    margin-right: 17px;
+    font-size: 25px;
+}
+
+.analisis-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 25px rgba(0, 170, 230, 0.4);
+}
+
+.hasil {
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.hasil-heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    padding: 18px 5px;
-    border-bottom: 1px solid #eee;
+
+    padding-bottom: 18px;
 }
 
-.hasil-item span {
-    color: #666;
+.hasil-heading > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.hasil-item strong {
-    font-size: 18px;
+.coral-icon {
+    font-size: 28px;
+}
+
+.hasil-heading p {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 13px;
+    font-style: italic;
+    opacity: 0.65;
     text-align: right;
-    word-break: break-word;
 }
 
-.jenis {
+.hasil-list {
+    background: rgba(3, 65, 115, 0.32);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.hasil-item {
+    min-height: 75px;
+
+    padding: 15px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255,255,255,0.16);
+
+    gap: 20px;
+}
+
+.hasil-item.last {
     border-bottom: none;
 }
 
-.jenis strong {
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: #eee;
+.hasil-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.hasil-label span {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(161, 232, 255, 0.14);
+    border-radius: 12px;
+
+    color: #b9f3ff;
+    font-size: 19px;
+}
+
+.hasil-label p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hasil-item strong {
+    max-width: 55%;
+
+    text-align: right;
+
+    font-family: "Baloo 2", sans-serif;
+    font-size: 17px;
+
+    color: #effcff;
+
+    word-break: break-word;
+}
+
+.tips {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 20px 24px;
+    margin-bottom: 25px;
+}
+
+.tips-icon {
+    font-size: 43px;
+}
+
+.tips h3 {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 20px;
+}
+
+.tips p {
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.78;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-bottom: 40px;
+    padding: 25px;
+}
+
+.info > div {
+    padding: 5px 22px;
+    border-right: 1px solid rgba(255,255,255,0.18);
+}
+
+.info > div:last-child {
+    border-right: none;
+}
+
+.info span {
+    font-size: 25px;
 }
 
 .info h3 {
-    margin-bottom: 15px;
+    font-family: "Baloo 2", sans-serif;
+    margin: 5px 0;
 }
 
 .info p {
-    margin: 8px 0;
-    color: #555;
+    font-size: 12px;
+    opacity: 0.7;
+    line-height: 1.4;
 }
 
+footer {
+    text-align: center;
+    padding: 30px 15px 45px;
+
+    font-family: "Baloo 2", sans-serif;
+    font-size: 15px;
+
+    color: #b9edff;
+    letter-spacing: 1px;
+}
+
+
+.bubble {
+    position: absolute;
+
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+
+    animation: float 4s ease-in-out infinite;
+}
+
+.bubble-1 {
+    width: 15px;
+    height: 15px;
+
+    left: 8%;
+    top: 35%;
+}
+
+.bubble-2 {
+    width: 9px;
+    height: 9px;
+
+    right: 10%;
+    top: 20%;
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
 @media (max-width: 600px) {
+
     body {
-        padding: 20px 12px;
+        min-width: 0;
     }
 
-    .header h1 {
-        font-size: 28px;
+    .ocean-bg {
+        background-position: center top;
     }
 
-    .card,
-    .hasil,
-    .info {
+    header {
+        margin-top: 10px;
+        padding: 9px 14px;
+        border-radius: 18px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .logo span {
+        font-size: 24px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    main {
+        width: min(100% - 20px, 600px);
+    }
+
+    .hero {
+        padding: 65px 5px 35px;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .hero h1 {
+        font-size: clamp(58px, 17vw, 85px);
+        line-height: 0.8;
+    }
+
+    .subtitle {
+        font-size: 17px;
+        margin-top: 24px;
+    }
+
+    .calculator,
+    .hasil {
         padding: 18px;
+        border-radius: 23px;
+    }
+
+    .section-title h2,
+    .hasil-heading h2 {
+        font-size: 22px;
+    }
+
+    .section-title p {
+        font-size: 12px;
+    }
+
+    input {
+        height: 54px;
+        font-size: 14px;
+    }
+
+    .contoh {
+        gap: 6px;
+    }
+
+    .contoh span {
+        width: 100%;
+        margin-bottom: 2px;
+    }
+
+    .contoh button {
+        font-size: 12px;
+        padding: 7px 10px;
+    }
+
+    .hasil-heading {
+        align-items: flex-start;
+    }
+
+    .hasil-heading p {
+        display: none;
     }
 
     .hasil-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 7px;
+        min-height: 70px;
+        padding: 13px;
     }
 
     .hasil-item strong {
-        text-align: left;
+        max-width: 48%;
+        font-size: 15px;
+    }
+
+    .hasil-label {
+        gap: 10px;
+    }
+
+    .hasil-label span {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .hasil-label p {
+        font-size: 13px;
+    }
+
+    .tips {
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    .tips-icon {
+        font-size: 35px;
+    }
+
+    .tips p {
+        font-size: 12px;
+    }
+
+    .info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .info > div {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        padding: 0 0 18px;
+    }
+
+    .info > div:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    footer {
+        padding-bottom: 35px;
     }
 }
