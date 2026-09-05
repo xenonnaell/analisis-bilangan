@@ -1,5 +1,3 @@
-const ROOT = "√";
-
 let real = [];
 let imag = [];
 
@@ -55,7 +53,7 @@ function bacaSuku(token) {
 
     if (!s) return;
 
-    if (s[0] === ROOT) {
+    if (s[0] === "√") {
         s = s.substring(1);
 
         let negatif = false;
@@ -73,6 +71,7 @@ function bacaSuku(token) {
         let x = parseInt(angka[0]);
 
         let hasil = akarSederhana(x, 1);
+
         c = hasil.c;
         r = hasil.r;
 
@@ -97,7 +96,7 @@ function bacaSuku(token) {
             im = true;
         }
 
-        else if (s[0] === ROOT) {
+        else if (s[0] === "√") {
             s = s.substring(1);
 
             let negatif = false;
@@ -141,16 +140,21 @@ function proses(input) {
         .replace(/−/g, "-");
 
     let token = "";
-    let i = 0;
 
-    while (i < input.length) {
+    for (let i = 0; i < input.length; i++) {
+
         let ch = input[i];
 
         if ((ch === "+" || ch === "-") && token.length > 0) {
 
-            if (ch === "-" && token[token.length - 1] === ROOT) {
+            if (
+                ch === "-" &&
+                token[token.length - 1] === "√"
+            ) {
                 token += ch;
-            } else {
+            }
+
+            else {
                 bacaSuku(token);
                 token = ch;
             }
@@ -159,8 +163,6 @@ function proses(input) {
         else {
             token += ch;
         }
-
-        i++;
     }
 
     bacaSuku(token);
@@ -175,6 +177,7 @@ function formatAngka(x) {
 }
 
 function tampil(arr) {
+
     if (arr.length === 0) {
         return "0";
     }
@@ -182,14 +185,18 @@ function tampil(arr) {
     let hasil = "";
 
     for (let i = 0; i < arr.length; i++) {
+
         let c = arr[i].c;
         let r = arr[i].r;
 
         if (i > 0) {
+
             if (c < 0) {
                 hasil += " - ";
                 c = Math.abs(c);
-            } else {
+            }
+
+            else {
                 hasil += " + ";
             }
         }
@@ -204,11 +211,12 @@ function tampil(arr) {
         }
 
         else {
+
             if (Math.abs(c - 1) > 1e-9) {
                 hasil += formatAngka(c);
             }
 
-            hasil += ROOT + r;
+            hasil += "√" + r;
         }
     }
 
@@ -216,6 +224,7 @@ function tampil(arr) {
 }
 
 function tampilImajiner(arr) {
+
     if (arr.length === 0) {
         return "0i";
     }
@@ -224,6 +233,7 @@ function tampilImajiner(arr) {
 }
 
 function bentukStandar() {
+
     let r = tampil(real);
 
     if (imag.length === 0) {
@@ -240,6 +250,7 @@ function bentukStandar() {
 }
 
 function jenisBilangan() {
+
     if (real.length === 0 && imag.length === 0) {
         return "Bilangan Nol";
     }
@@ -256,7 +267,11 @@ function jenisBilangan() {
 }
 
 function analisis() {
-    let input = document.getElementById("inputBilangan").value.trim();
+
+    let input =
+        document.getElementById("inputBilangan")
+        .value
+        .trim();
 
     if (input === "") {
         alert("Masukkan bilangan terlebih dahulu!");
@@ -265,21 +280,38 @@ function analisis() {
 
     proses(input);
 
-    document.getElementById("standar").textContent = bentukStandar();
-    document.getElementById("real").textContent = tampil(real);
-    document.getElementById("imaginer").textContent = tampilImajiner(imag);
-    document.getElementById("jenis").textContent = jenisBilangan();
+    document.getElementById("standar").textContent =
+        bentukStandar();
+
+    document.getElementById("real").textContent =
+        tampil(real);
+
+    document.getElementById("imaginer").textContent =
+        tampilImajiner(imag);
+
+    document.getElementById("jenis").textContent =
+        jenisBilangan();
+
+    document.querySelector(".hasil")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 }
 
 function isiContoh(teks) {
+
     document.getElementById("inputBilangan").value = teks;
+
     analisis();
 }
 
 document
     .getElementById("inputBilangan")
     .addEventListener("keydown", function(event) {
+
         if (event.key === "Enter") {
             analisis();
         }
+
     });
